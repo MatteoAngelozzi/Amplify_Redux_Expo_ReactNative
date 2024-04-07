@@ -1,0 +1,28 @@
+enum Status {
+  TO_BE_DEFINED
+  IDLE
+  ONGOING
+  DONE
+  CANCELLED
+  DELAY
+}
+
+type Task @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  logo: String
+  name: String
+  description: String
+  status: Status
+}
+
+type Customers @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  logo: String
+  name: String
+  adress: String
+  phone_number: AWSPhone
+  email: AWSEmail
+  VAT: String
+  description: String
+}
+ 
