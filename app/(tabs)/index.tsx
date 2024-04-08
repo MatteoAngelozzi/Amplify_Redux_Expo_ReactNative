@@ -29,7 +29,7 @@ export default function ToDoList() {
           {({ pressed }) => (
           <>
           <Text style={{fontSize:18, opacity: pressed? 0.5 : 1}}>{item.name}</Text>
-          <Text style={{opacity: pressed? 0.5 : 1}}>{item.createdAt.slice(11, 16)} / {item.createdAt.slice(2, 10)}</Text>
+          <Text style={{opacity: pressed? 0.5 : 1}}>{item.createdAt.slice(2, 10)}</Text>
           </>
           )}
         </Pressable>

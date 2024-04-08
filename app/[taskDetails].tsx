@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Dimensions, Platform, SafeAreaView, StyleSheet } from 'react-native';
+import { Dimensions, Platform, Pressable, SafeAreaView, StyleSheet } from 'react-native';
 import { Text, View } from '@/components/Themed';
 import { RootState } from '@/state/store';
 import { useSelector } from 'react-redux';
@@ -27,7 +27,7 @@ export default function TaskDetail() {
         <View style={styles.container_list}>
           <View style={styles.list}>
               <Text style={{fontSize:20}}>Submission date:</Text>
-              <Text>{task.createdAt.slice(11, 16)} / {task.createdAt.slice(2, 10)}</Text>
+              <Text>{task.createdAt.slice(2, 10)}</Text>
           </View>
           <View style={styles.list}>
               <Text style={{fontSize:20}}>Task status:</Text>
@@ -38,6 +38,10 @@ export default function TaskDetail() {
               <Text>{task.description}</Text>
           </View>
         </View>
+
+        <Pressable style={styles.button}>
+          <Text style={{fontSize:20, fontWeight: 'bold'}}>Add files</Text>
+        </Pressable>
 
         {/* Use a light status bar on iOS to account for the black space above the modal */}
         <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
@@ -80,4 +84,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
   },
+  button:{
+    width: '70%',
+    marginVertical: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    backgroundColor: 'lightgray',
+    padding: 10,
+    borderRadius: 15
+  }
 });
