@@ -8,108 +8,198 @@ type GeneratedSubscription<InputType, OutputType> = string & {
   __generatedSubscriptionOutput: OutputType;
 };
 
-export const onCreateTask = /* GraphQL */ `subscription OnCreateTask($filter: ModelSubscriptionTaskFilterInput) {
-  onCreateTask(filter: $filter) {
+export const onCreateProperties = /* GraphQL */ `subscription OnCreateProperties(
+  $filter: ModelSubscriptionPropertiesFilterInput
+) {
+  onCreateProperties(filter: $filter) {
     id
-    logo
     name
-    description
-    status
+    logo
+    photo
+    tasks {
+      id
+      title
+      description
+      due_date
+      media
+      __typename
+    }
+    clientsID
     createdAt
     updatedAt
     __typename
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnCreateTaskSubscriptionVariables,
-  APITypes.OnCreateTaskSubscription
+  APITypes.OnCreatePropertiesSubscriptionVariables,
+  APITypes.OnCreatePropertiesSubscription
 >;
-export const onUpdateTask = /* GraphQL */ `subscription OnUpdateTask($filter: ModelSubscriptionTaskFilterInput) {
-  onUpdateTask(filter: $filter) {
+export const onUpdateProperties = /* GraphQL */ `subscription OnUpdateProperties(
+  $filter: ModelSubscriptionPropertiesFilterInput
+) {
+  onUpdateProperties(filter: $filter) {
     id
-    logo
     name
-    description
-    status
+    logo
+    photo
+    tasks {
+      id
+      title
+      description
+      due_date
+      media
+      __typename
+    }
+    clientsID
     createdAt
     updatedAt
     __typename
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnUpdateTaskSubscriptionVariables,
-  APITypes.OnUpdateTaskSubscription
+  APITypes.OnUpdatePropertiesSubscriptionVariables,
+  APITypes.OnUpdatePropertiesSubscription
 >;
-export const onDeleteTask = /* GraphQL */ `subscription OnDeleteTask($filter: ModelSubscriptionTaskFilterInput) {
-  onDeleteTask(filter: $filter) {
+export const onDeleteProperties = /* GraphQL */ `subscription OnDeleteProperties(
+  $filter: ModelSubscriptionPropertiesFilterInput
+) {
+  onDeleteProperties(filter: $filter) {
     id
-    logo
     name
-    description
-    status
+    logo
+    photo
+    tasks {
+      id
+      title
+      description
+      due_date
+      media
+      __typename
+    }
+    clientsID
     createdAt
     updatedAt
     __typename
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnDeleteTaskSubscriptionVariables,
-  APITypes.OnDeleteTaskSubscription
+  APITypes.OnDeletePropertiesSubscriptionVariables,
+  APITypes.OnDeletePropertiesSubscription
 >;
-export const onCreateCustomers = /* GraphQL */ `subscription OnCreateCustomers($filter: ModelSubscriptionCustomersFilterInput) {
-  onCreateCustomers(filter: $filter) {
+export const onCreateClients = /* GraphQL */ `subscription OnCreateClients($filter: ModelSubscriptionClientsFilterInput) {
+  onCreateClients(filter: $filter) {
     id
-    logo
     name
-    adress
+    address
     phone_number
     email
-    VAT
-    description
+    avatar
+    Properties {
+      items {
+        id
+        name
+        logo
+        photo
+        tasks {
+          id
+          title
+          description
+          due_date
+          media
+          __typename
+        }
+        clientsID
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
     createdAt
     updatedAt
     __typename
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnCreateCustomersSubscriptionVariables,
-  APITypes.OnCreateCustomersSubscription
+  APITypes.OnCreateClientsSubscriptionVariables,
+  APITypes.OnCreateClientsSubscription
 >;
-export const onUpdateCustomers = /* GraphQL */ `subscription OnUpdateCustomers($filter: ModelSubscriptionCustomersFilterInput) {
-  onUpdateCustomers(filter: $filter) {
+export const onUpdateClients = /* GraphQL */ `subscription OnUpdateClients($filter: ModelSubscriptionClientsFilterInput) {
+  onUpdateClients(filter: $filter) {
     id
-    logo
     name
-    adress
+    address
     phone_number
     email
-    VAT
-    description
+    avatar
+    Properties {
+      items {
+        id
+        name
+        logo
+        photo
+        tasks {
+          id
+          title
+          description
+          due_date
+          media
+          __typename
+        }
+        clientsID
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
     createdAt
     updatedAt
     __typename
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnUpdateCustomersSubscriptionVariables,
-  APITypes.OnUpdateCustomersSubscription
+  APITypes.OnUpdateClientsSubscriptionVariables,
+  APITypes.OnUpdateClientsSubscription
 >;
-export const onDeleteCustomers = /* GraphQL */ `subscription OnDeleteCustomers($filter: ModelSubscriptionCustomersFilterInput) {
-  onDeleteCustomers(filter: $filter) {
+export const onDeleteClients = /* GraphQL */ `subscription OnDeleteClients($filter: ModelSubscriptionClientsFilterInput) {
+  onDeleteClients(filter: $filter) {
     id
-    logo
     name
-    adress
+    address
     phone_number
     email
-    VAT
-    description
+    avatar
+    Properties {
+      items {
+        id
+        name
+        logo
+        photo
+        tasks {
+          id
+          title
+          description
+          due_date
+          media
+          __typename
+        }
+        clientsID
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
     createdAt
     updatedAt
     __typename
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnDeleteCustomersSubscriptionVariables,
-  APITypes.OnDeleteCustomersSubscription
+  APITypes.OnDeleteClientsSubscriptionVariables,
+  APITypes.OnDeleteClientsSubscription
 >;

@@ -8,31 +8,50 @@ type GeneratedQuery<InputType, OutputType> = string & {
   __generatedQueryOutput: OutputType;
 };
 
-export const getTask = /* GraphQL */ `query GetTask($id: ID!) {
-  getTask(id: $id) {
+export const getProperties = /* GraphQL */ `query GetProperties($id: ID!) {
+  getProperties(id: $id) {
     id
-    logo
     name
-    description
-    status
+    logo
+    photo
+    tasks {
+      id
+      title
+      description
+      due_date
+      media
+      __typename
+    }
+    clientsID
     createdAt
     updatedAt
     __typename
   }
 }
-` as GeneratedQuery<APITypes.GetTaskQueryVariables, APITypes.GetTaskQuery>;
-export const listTasks = /* GraphQL */ `query ListTasks(
-  $filter: ModelTaskFilterInput
+` as GeneratedQuery<
+  APITypes.GetPropertiesQueryVariables,
+  APITypes.GetPropertiesQuery
+>;
+export const listProperties = /* GraphQL */ `query ListProperties(
+  $filter: ModelPropertiesFilterInput
   $limit: Int
   $nextToken: String
 ) {
-  listTasks(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  listProperties(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
-      logo
       name
-      description
-      status
+      logo
+      photo
+      tasks {
+        id
+        title
+        description
+        due_date
+        media
+        __typename
+      }
+      clientsID
       createdAt
       updatedAt
       __typename
@@ -41,41 +60,124 @@ export const listTasks = /* GraphQL */ `query ListTasks(
     __typename
   }
 }
-` as GeneratedQuery<APITypes.ListTasksQueryVariables, APITypes.ListTasksQuery>;
-export const getCustomers = /* GraphQL */ `query GetCustomers($id: ID!) {
-  getCustomers(id: $id) {
+` as GeneratedQuery<
+  APITypes.ListPropertiesQueryVariables,
+  APITypes.ListPropertiesQuery
+>;
+export const propertiesByClientsID = /* GraphQL */ `query PropertiesByClientsID(
+  $clientsID: ID!
+  $sortDirection: ModelSortDirection
+  $filter: ModelPropertiesFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  propertiesByClientsID(
+    clientsID: $clientsID
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      name
+      logo
+      photo
+      tasks {
+        id
+        title
+        description
+        due_date
+        media
+        __typename
+      }
+      clientsID
+      createdAt
+      updatedAt
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.PropertiesByClientsIDQueryVariables,
+  APITypes.PropertiesByClientsIDQuery
+>;
+export const getClients = /* GraphQL */ `query GetClients($id: ID!) {
+  getClients(id: $id) {
     id
-    logo
     name
-    adress
+    address
     phone_number
     email
-    VAT
-    description
+    avatar
+    Properties {
+      items {
+        id
+        name
+        logo
+        photo
+        tasks {
+          id
+          title
+          description
+          due_date
+          media
+          __typename
+        }
+        clientsID
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
     createdAt
     updatedAt
     __typename
   }
 }
 ` as GeneratedQuery<
-  APITypes.GetCustomersQueryVariables,
-  APITypes.GetCustomersQuery
+  APITypes.GetClientsQueryVariables,
+  APITypes.GetClientsQuery
 >;
-export const listCustomers = /* GraphQL */ `query ListCustomers(
-  $filter: ModelCustomersFilterInput
+export const listClients = /* GraphQL */ `query ListClients(
+  $filter: ModelClientsFilterInput
   $limit: Int
   $nextToken: String
 ) {
-  listCustomers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  listClients(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
-      logo
       name
-      adress
+      address
       phone_number
       email
-      VAT
-      description
+      avatar
+      Properties {
+        items {
+          id
+          name
+          logo
+          photo
+          tasks {
+            id
+            title
+            description
+            due_date
+            media
+            __typename
+          }
+          clientsID
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -85,6 +187,6 @@ export const listCustomers = /* GraphQL */ `query ListCustomers(
   }
 }
 ` as GeneratedQuery<
-  APITypes.ListCustomersQueryVariables,
-  APITypes.ListCustomersQuery
+  APITypes.ListClientsQueryVariables,
+  APITypes.ListClientsQuery
 >;

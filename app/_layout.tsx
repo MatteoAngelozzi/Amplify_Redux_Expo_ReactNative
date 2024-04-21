@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { store } from '../state/store';
 import { useColorScheme } from '@/components/useColorScheme';
+import Colors from '@/constants/Colors';
 
 Amplify.configure(config);
 
@@ -54,11 +55,10 @@ function RootLayoutNav() {
 
   return (
     <Provider store={store}>
-      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      <ThemeProvider value={DefaultTheme}>
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-          <Stack.Screen name="[taskDetails]" options={{ presentation: 'modal', headerShown: false }} />
+          <Stack.Screen name="modal" options={{ presentation: 'modal', headerShown: false}}/>
         </Stack>
       </ThemeProvider>
     </Provider>

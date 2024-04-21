@@ -2,32 +2,31 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
-export type CreateTaskInput = {
+export type CreatePropertiesInput = {
   id?: string | null,
-  logo?: string | null,
   name?: string | null,
-  description?: string | null,
-  status?: Status | null,
+  logo?: string | null,
+  photo?: string | null,
+  tasks?: Array< TasksInput | null > | null,
+  clientsID: string,
 };
 
-export enum Status {
-  TO_BE_DEFINED = "TO_BE_DEFINED",
-  IDLE = "IDLE",
-  ONGOING = "ONGOING",
-  DONE = "DONE",
-  CANCELLED = "CANCELLED",
-  DELAY = "DELAY",
-}
+export type TasksInput = {
+  id: string,
+  title?: string | null,
+  description?: string | null,
+  due_date?: string | null,
+  media?: Array< string | null > | null,
+};
 
-
-export type ModelTaskConditionInput = {
-  logo?: ModelStringInput | null,
+export type ModelPropertiesConditionInput = {
   name?: ModelStringInput | null,
-  description?: ModelStringInput | null,
-  status?: ModelStatusInput | null,
-  and?: Array< ModelTaskConditionInput | null > | null,
-  or?: Array< ModelTaskConditionInput | null > | null,
-  not?: ModelTaskConditionInput | null,
+  logo?: ModelStringInput | null,
+  photo?: ModelStringInput | null,
+  clientsID?: ModelIDInput | null,
+  and?: Array< ModelPropertiesConditionInput | null > | null,
+  or?: Array< ModelPropertiesConditionInput | null > | null,
+  not?: ModelPropertiesConditionInput | null,
 };
 
 export type ModelStringInput = {
@@ -70,98 +69,6 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
-export type ModelStatusInput = {
-  eq?: Status | null,
-  ne?: Status | null,
-};
-
-export type Task = {
-  __typename: "Task",
-  id: string,
-  logo?: string | null,
-  name?: string | null,
-  description?: string | null,
-  status?: Status | null,
-  createdAt: string,
-  updatedAt: string,
-};
-
-export type UpdateTaskInput = {
-  id: string,
-  logo?: string | null,
-  name?: string | null,
-  description?: string | null,
-  status?: Status | null,
-};
-
-export type DeleteTaskInput = {
-  id: string,
-};
-
-export type CreateCustomersInput = {
-  id?: string | null,
-  logo?: string | null,
-  name?: string | null,
-  adress?: string | null,
-  phone_number?: string | null,
-  email?: string | null,
-  VAT?: string | null,
-  description?: string | null,
-};
-
-export type ModelCustomersConditionInput = {
-  logo?: ModelStringInput | null,
-  name?: ModelStringInput | null,
-  adress?: ModelStringInput | null,
-  phone_number?: ModelStringInput | null,
-  email?: ModelStringInput | null,
-  VAT?: ModelStringInput | null,
-  description?: ModelStringInput | null,
-  and?: Array< ModelCustomersConditionInput | null > | null,
-  or?: Array< ModelCustomersConditionInput | null > | null,
-  not?: ModelCustomersConditionInput | null,
-};
-
-export type Customers = {
-  __typename: "Customers",
-  id: string,
-  logo?: string | null,
-  name?: string | null,
-  adress?: string | null,
-  phone_number?: string | null,
-  email?: string | null,
-  VAT?: string | null,
-  description?: string | null,
-  createdAt: string,
-  updatedAt: string,
-};
-
-export type UpdateCustomersInput = {
-  id: string,
-  logo?: string | null,
-  name?: string | null,
-  adress?: string | null,
-  phone_number?: string | null,
-  email?: string | null,
-  VAT?: string | null,
-  description?: string | null,
-};
-
-export type DeleteCustomersInput = {
-  id: string,
-};
-
-export type ModelTaskFilterInput = {
-  id?: ModelIDInput | null,
-  logo?: ModelStringInput | null,
-  name?: ModelStringInput | null,
-  description?: ModelStringInput | null,
-  status?: ModelStatusInput | null,
-  and?: Array< ModelTaskFilterInput | null > | null,
-  or?: Array< ModelTaskFilterInput | null > | null,
-  not?: ModelTaskFilterInput | null,
-};
-
 export type ModelIDInput = {
   ne?: string | null,
   eq?: string | null,
@@ -178,40 +85,135 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null,
 };
 
-export type ModelTaskConnection = {
-  __typename: "ModelTaskConnection",
-  items:  Array<Task | null >,
-  nextToken?: string | null,
+export type Properties = {
+  __typename: "Properties",
+  id: string,
+  name?: string | null,
+  logo?: string | null,
+  photo?: string | null,
+  tasks?:  Array<Tasks | null > | null,
+  clientsID: string,
+  createdAt: string,
+  updatedAt: string,
 };
 
-export type ModelCustomersFilterInput = {
-  id?: ModelIDInput | null,
-  logo?: ModelStringInput | null,
+export type Tasks = {
+  __typename: "Tasks",
+  id: string,
+  title?: string | null,
+  description?: string | null,
+  due_date?: string | null,
+  media?: Array< string | null > | null,
+};
+
+export type UpdatePropertiesInput = {
+  id: string,
+  name?: string | null,
+  logo?: string | null,
+  photo?: string | null,
+  tasks?: Array< TasksInput | null > | null,
+  clientsID?: string | null,
+};
+
+export type DeletePropertiesInput = {
+  id: string,
+};
+
+export type CreateClientsInput = {
+  id?: string | null,
+  name?: string | null,
+  address?: string | null,
+  phone_number?: string | null,
+  email?: string | null,
+  avatar?: string | null,
+};
+
+export type ModelClientsConditionInput = {
   name?: ModelStringInput | null,
-  adress?: ModelStringInput | null,
+  address?: ModelStringInput | null,
   phone_number?: ModelStringInput | null,
   email?: ModelStringInput | null,
-  VAT?: ModelStringInput | null,
-  description?: ModelStringInput | null,
-  and?: Array< ModelCustomersFilterInput | null > | null,
-  or?: Array< ModelCustomersFilterInput | null > | null,
-  not?: ModelCustomersFilterInput | null,
+  avatar?: ModelStringInput | null,
+  and?: Array< ModelClientsConditionInput | null > | null,
+  or?: Array< ModelClientsConditionInput | null > | null,
+  not?: ModelClientsConditionInput | null,
 };
 
-export type ModelCustomersConnection = {
-  __typename: "ModelCustomersConnection",
-  items:  Array<Customers | null >,
+export type Clients = {
+  __typename: "Clients",
+  id: string,
+  name?: string | null,
+  address?: string | null,
+  phone_number?: string | null,
+  email?: string | null,
+  avatar?: string | null,
+  Properties?: ModelPropertiesConnection | null,
+  createdAt: string,
+  updatedAt: string,
+};
+
+export type ModelPropertiesConnection = {
+  __typename: "ModelPropertiesConnection",
+  items:  Array<Properties | null >,
   nextToken?: string | null,
 };
 
-export type ModelSubscriptionTaskFilterInput = {
+export type UpdateClientsInput = {
+  id: string,
+  name?: string | null,
+  address?: string | null,
+  phone_number?: string | null,
+  email?: string | null,
+  avatar?: string | null,
+};
+
+export type DeleteClientsInput = {
+  id: string,
+};
+
+export type ModelPropertiesFilterInput = {
+  id?: ModelIDInput | null,
+  name?: ModelStringInput | null,
+  logo?: ModelStringInput | null,
+  photo?: ModelStringInput | null,
+  clientsID?: ModelIDInput | null,
+  and?: Array< ModelPropertiesFilterInput | null > | null,
+  or?: Array< ModelPropertiesFilterInput | null > | null,
+  not?: ModelPropertiesFilterInput | null,
+};
+
+export enum ModelSortDirection {
+  ASC = "ASC",
+  DESC = "DESC",
+}
+
+
+export type ModelClientsFilterInput = {
+  id?: ModelIDInput | null,
+  name?: ModelStringInput | null,
+  address?: ModelStringInput | null,
+  phone_number?: ModelStringInput | null,
+  email?: ModelStringInput | null,
+  avatar?: ModelStringInput | null,
+  and?: Array< ModelClientsFilterInput | null > | null,
+  or?: Array< ModelClientsFilterInput | null > | null,
+  not?: ModelClientsFilterInput | null,
+};
+
+export type ModelClientsConnection = {
+  __typename: "ModelClientsConnection",
+  items:  Array<Clients | null >,
+  nextToken?: string | null,
+};
+
+export type ModelSubscriptionPropertiesFilterInput = {
   id?: ModelSubscriptionIDInput | null,
-  logo?: ModelSubscriptionStringInput | null,
   name?: ModelSubscriptionStringInput | null,
-  description?: ModelSubscriptionStringInput | null,
-  status?: ModelSubscriptionStringInput | null,
-  and?: Array< ModelSubscriptionTaskFilterInput | null > | null,
-  or?: Array< ModelSubscriptionTaskFilterInput | null > | null,
+  logo?: ModelSubscriptionStringInput | null,
+  photo?: ModelSubscriptionStringInput | null,
+  clientsID?: ModelSubscriptionIDInput | null,
+  and?: Array< ModelSubscriptionPropertiesFilterInput | null > | null,
+  or?: Array< ModelSubscriptionPropertiesFilterInput | null > | null,
 };
 
 export type ModelSubscriptionIDInput = {
@@ -244,169 +246,267 @@ export type ModelSubscriptionStringInput = {
   notIn?: Array< string | null > | null,
 };
 
-export type ModelSubscriptionCustomersFilterInput = {
+export type ModelSubscriptionClientsFilterInput = {
   id?: ModelSubscriptionIDInput | null,
-  logo?: ModelSubscriptionStringInput | null,
   name?: ModelSubscriptionStringInput | null,
-  adress?: ModelSubscriptionStringInput | null,
+  address?: ModelSubscriptionStringInput | null,
   phone_number?: ModelSubscriptionStringInput | null,
   email?: ModelSubscriptionStringInput | null,
-  VAT?: ModelSubscriptionStringInput | null,
-  description?: ModelSubscriptionStringInput | null,
-  and?: Array< ModelSubscriptionCustomersFilterInput | null > | null,
-  or?: Array< ModelSubscriptionCustomersFilterInput | null > | null,
+  avatar?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionClientsFilterInput | null > | null,
+  or?: Array< ModelSubscriptionClientsFilterInput | null > | null,
 };
 
-export type CreateTaskMutationVariables = {
-  input: CreateTaskInput,
-  condition?: ModelTaskConditionInput | null,
+export type CreatePropertiesMutationVariables = {
+  input: CreatePropertiesInput,
+  condition?: ModelPropertiesConditionInput | null,
 };
 
-export type CreateTaskMutation = {
-  createTask?:  {
-    __typename: "Task",
+export type CreatePropertiesMutation = {
+  createProperties?:  {
+    __typename: "Properties",
     id: string,
-    logo?: string | null,
     name?: string | null,
-    description?: string | null,
-    status?: Status | null,
+    logo?: string | null,
+    photo?: string | null,
+    tasks?:  Array< {
+      __typename: "Tasks",
+      id: string,
+      title?: string | null,
+      description?: string | null,
+      due_date?: string | null,
+      media?: Array< string | null > | null,
+    } | null > | null,
+    clientsID: string,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type UpdateTaskMutationVariables = {
-  input: UpdateTaskInput,
-  condition?: ModelTaskConditionInput | null,
+export type UpdatePropertiesMutationVariables = {
+  input: UpdatePropertiesInput,
+  condition?: ModelPropertiesConditionInput | null,
 };
 
-export type UpdateTaskMutation = {
-  updateTask?:  {
-    __typename: "Task",
+export type UpdatePropertiesMutation = {
+  updateProperties?:  {
+    __typename: "Properties",
     id: string,
-    logo?: string | null,
     name?: string | null,
-    description?: string | null,
-    status?: Status | null,
+    logo?: string | null,
+    photo?: string | null,
+    tasks?:  Array< {
+      __typename: "Tasks",
+      id: string,
+      title?: string | null,
+      description?: string | null,
+      due_date?: string | null,
+      media?: Array< string | null > | null,
+    } | null > | null,
+    clientsID: string,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type DeleteTaskMutationVariables = {
-  input: DeleteTaskInput,
-  condition?: ModelTaskConditionInput | null,
+export type DeletePropertiesMutationVariables = {
+  input: DeletePropertiesInput,
+  condition?: ModelPropertiesConditionInput | null,
 };
 
-export type DeleteTaskMutation = {
-  deleteTask?:  {
-    __typename: "Task",
+export type DeletePropertiesMutation = {
+  deleteProperties?:  {
+    __typename: "Properties",
     id: string,
-    logo?: string | null,
     name?: string | null,
-    description?: string | null,
-    status?: Status | null,
+    logo?: string | null,
+    photo?: string | null,
+    tasks?:  Array< {
+      __typename: "Tasks",
+      id: string,
+      title?: string | null,
+      description?: string | null,
+      due_date?: string | null,
+      media?: Array< string | null > | null,
+    } | null > | null,
+    clientsID: string,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type CreateCustomersMutationVariables = {
-  input: CreateCustomersInput,
-  condition?: ModelCustomersConditionInput | null,
+export type CreateClientsMutationVariables = {
+  input: CreateClientsInput,
+  condition?: ModelClientsConditionInput | null,
 };
 
-export type CreateCustomersMutation = {
-  createCustomers?:  {
-    __typename: "Customers",
+export type CreateClientsMutation = {
+  createClients?:  {
+    __typename: "Clients",
     id: string,
-    logo?: string | null,
     name?: string | null,
-    adress?: string | null,
+    address?: string | null,
     phone_number?: string | null,
     email?: string | null,
-    VAT?: string | null,
-    description?: string | null,
+    avatar?: string | null,
+    Properties?:  {
+      __typename: "ModelPropertiesConnection",
+      items:  Array< {
+        __typename: "Properties",
+        id: string,
+        name?: string | null,
+        logo?: string | null,
+        photo?: string | null,
+        tasks?:  Array< {
+          __typename: "Tasks",
+          id: string,
+          title?: string | null,
+          description?: string | null,
+          due_date?: string | null,
+          media?: Array< string | null > | null,
+        } | null > | null,
+        clientsID: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type UpdateCustomersMutationVariables = {
-  input: UpdateCustomersInput,
-  condition?: ModelCustomersConditionInput | null,
+export type UpdateClientsMutationVariables = {
+  input: UpdateClientsInput,
+  condition?: ModelClientsConditionInput | null,
 };
 
-export type UpdateCustomersMutation = {
-  updateCustomers?:  {
-    __typename: "Customers",
+export type UpdateClientsMutation = {
+  updateClients?:  {
+    __typename: "Clients",
     id: string,
-    logo?: string | null,
     name?: string | null,
-    adress?: string | null,
+    address?: string | null,
     phone_number?: string | null,
     email?: string | null,
-    VAT?: string | null,
-    description?: string | null,
+    avatar?: string | null,
+    Properties?:  {
+      __typename: "ModelPropertiesConnection",
+      items:  Array< {
+        __typename: "Properties",
+        id: string,
+        name?: string | null,
+        logo?: string | null,
+        photo?: string | null,
+        tasks?:  Array< {
+          __typename: "Tasks",
+          id: string,
+          title?: string | null,
+          description?: string | null,
+          due_date?: string | null,
+          media?: Array< string | null > | null,
+        } | null > | null,
+        clientsID: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type DeleteCustomersMutationVariables = {
-  input: DeleteCustomersInput,
-  condition?: ModelCustomersConditionInput | null,
+export type DeleteClientsMutationVariables = {
+  input: DeleteClientsInput,
+  condition?: ModelClientsConditionInput | null,
 };
 
-export type DeleteCustomersMutation = {
-  deleteCustomers?:  {
-    __typename: "Customers",
+export type DeleteClientsMutation = {
+  deleteClients?:  {
+    __typename: "Clients",
     id: string,
-    logo?: string | null,
     name?: string | null,
-    adress?: string | null,
+    address?: string | null,
     phone_number?: string | null,
     email?: string | null,
-    VAT?: string | null,
-    description?: string | null,
+    avatar?: string | null,
+    Properties?:  {
+      __typename: "ModelPropertiesConnection",
+      items:  Array< {
+        __typename: "Properties",
+        id: string,
+        name?: string | null,
+        logo?: string | null,
+        photo?: string | null,
+        tasks?:  Array< {
+          __typename: "Tasks",
+          id: string,
+          title?: string | null,
+          description?: string | null,
+          due_date?: string | null,
+          media?: Array< string | null > | null,
+        } | null > | null,
+        clientsID: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type GetTaskQueryVariables = {
+export type GetPropertiesQueryVariables = {
   id: string,
 };
 
-export type GetTaskQuery = {
-  getTask?:  {
-    __typename: "Task",
+export type GetPropertiesQuery = {
+  getProperties?:  {
+    __typename: "Properties",
     id: string,
-    logo?: string | null,
     name?: string | null,
-    description?: string | null,
-    status?: Status | null,
+    logo?: string | null,
+    photo?: string | null,
+    tasks?:  Array< {
+      __typename: "Tasks",
+      id: string,
+      title?: string | null,
+      description?: string | null,
+      due_date?: string | null,
+      media?: Array< string | null > | null,
+    } | null > | null,
+    clientsID: string,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type ListTasksQueryVariables = {
-  filter?: ModelTaskFilterInput | null,
+export type ListPropertiesQueryVariables = {
+  filter?: ModelPropertiesFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
 };
 
-export type ListTasksQuery = {
-  listTasks?:  {
-    __typename: "ModelTaskConnection",
+export type ListPropertiesQuery = {
+  listProperties?:  {
+    __typename: "ModelPropertiesConnection",
     items:  Array< {
-      __typename: "Task",
+      __typename: "Properties",
       id: string,
-      logo?: string | null,
       name?: string | null,
-      description?: string | null,
-      status?: Status | null,
+      logo?: string | null,
+      photo?: string | null,
+      tasks?:  Array< {
+        __typename: "Tasks",
+        id: string,
+        title?: string | null,
+        description?: string | null,
+        due_date?: string | null,
+        media?: Array< string | null > | null,
+      } | null > | null,
+      clientsID: string,
       createdAt: string,
       updatedAt: string,
     } | null >,
@@ -414,45 +514,118 @@ export type ListTasksQuery = {
   } | null,
 };
 
-export type GetCustomersQueryVariables = {
+export type PropertiesByClientsIDQueryVariables = {
+  clientsID: string,
+  sortDirection?: ModelSortDirection | null,
+  filter?: ModelPropertiesFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type PropertiesByClientsIDQuery = {
+  propertiesByClientsID?:  {
+    __typename: "ModelPropertiesConnection",
+    items:  Array< {
+      __typename: "Properties",
+      id: string,
+      name?: string | null,
+      logo?: string | null,
+      photo?: string | null,
+      tasks?:  Array< {
+        __typename: "Tasks",
+        id: string,
+        title?: string | null,
+        description?: string | null,
+        due_date?: string | null,
+        media?: Array< string | null > | null,
+      } | null > | null,
+      clientsID: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type GetClientsQueryVariables = {
   id: string,
 };
 
-export type GetCustomersQuery = {
-  getCustomers?:  {
-    __typename: "Customers",
+export type GetClientsQuery = {
+  getClients?:  {
+    __typename: "Clients",
     id: string,
-    logo?: string | null,
     name?: string | null,
-    adress?: string | null,
+    address?: string | null,
     phone_number?: string | null,
     email?: string | null,
-    VAT?: string | null,
-    description?: string | null,
+    avatar?: string | null,
+    Properties?:  {
+      __typename: "ModelPropertiesConnection",
+      items:  Array< {
+        __typename: "Properties",
+        id: string,
+        name?: string | null,
+        logo?: string | null,
+        photo?: string | null,
+        tasks?:  Array< {
+          __typename: "Tasks",
+          id: string,
+          title?: string | null,
+          description?: string | null,
+          due_date?: string | null,
+          media?: Array< string | null > | null,
+        } | null > | null,
+        clientsID: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type ListCustomersQueryVariables = {
-  filter?: ModelCustomersFilterInput | null,
+export type ListClientsQueryVariables = {
+  filter?: ModelClientsFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
 };
 
-export type ListCustomersQuery = {
-  listCustomers?:  {
-    __typename: "ModelCustomersConnection",
+export type ListClientsQuery = {
+  listClients?:  {
+    __typename: "ModelClientsConnection",
     items:  Array< {
-      __typename: "Customers",
+      __typename: "Clients",
       id: string,
-      logo?: string | null,
       name?: string | null,
-      adress?: string | null,
+      address?: string | null,
       phone_number?: string | null,
       email?: string | null,
-      VAT?: string | null,
-      description?: string | null,
+      avatar?: string | null,
+      Properties?:  {
+        __typename: "ModelPropertiesConnection",
+        items:  Array< {
+          __typename: "Properties",
+          id: string,
+          name?: string | null,
+          logo?: string | null,
+          photo?: string | null,
+          tasks?:  Array< {
+            __typename: "Tasks",
+            id: string,
+            title?: string | null,
+            description?: string | null,
+            due_date?: string | null,
+            media?: Array< string | null > | null,
+          } | null > | null,
+          clientsID: string,
+          createdAt: string,
+          updatedAt: string,
+        } | null >,
+        nextToken?: string | null,
+      } | null,
       createdAt: string,
       updatedAt: string,
     } | null >,
@@ -460,112 +633,196 @@ export type ListCustomersQuery = {
   } | null,
 };
 
-export type OnCreateTaskSubscriptionVariables = {
-  filter?: ModelSubscriptionTaskFilterInput | null,
+export type OnCreatePropertiesSubscriptionVariables = {
+  filter?: ModelSubscriptionPropertiesFilterInput | null,
 };
 
-export type OnCreateTaskSubscription = {
-  onCreateTask?:  {
-    __typename: "Task",
+export type OnCreatePropertiesSubscription = {
+  onCreateProperties?:  {
+    __typename: "Properties",
     id: string,
-    logo?: string | null,
     name?: string | null,
-    description?: string | null,
-    status?: Status | null,
+    logo?: string | null,
+    photo?: string | null,
+    tasks?:  Array< {
+      __typename: "Tasks",
+      id: string,
+      title?: string | null,
+      description?: string | null,
+      due_date?: string | null,
+      media?: Array< string | null > | null,
+    } | null > | null,
+    clientsID: string,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type OnUpdateTaskSubscriptionVariables = {
-  filter?: ModelSubscriptionTaskFilterInput | null,
+export type OnUpdatePropertiesSubscriptionVariables = {
+  filter?: ModelSubscriptionPropertiesFilterInput | null,
 };
 
-export type OnUpdateTaskSubscription = {
-  onUpdateTask?:  {
-    __typename: "Task",
+export type OnUpdatePropertiesSubscription = {
+  onUpdateProperties?:  {
+    __typename: "Properties",
     id: string,
-    logo?: string | null,
     name?: string | null,
-    description?: string | null,
-    status?: Status | null,
+    logo?: string | null,
+    photo?: string | null,
+    tasks?:  Array< {
+      __typename: "Tasks",
+      id: string,
+      title?: string | null,
+      description?: string | null,
+      due_date?: string | null,
+      media?: Array< string | null > | null,
+    } | null > | null,
+    clientsID: string,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type OnDeleteTaskSubscriptionVariables = {
-  filter?: ModelSubscriptionTaskFilterInput | null,
+export type OnDeletePropertiesSubscriptionVariables = {
+  filter?: ModelSubscriptionPropertiesFilterInput | null,
 };
 
-export type OnDeleteTaskSubscription = {
-  onDeleteTask?:  {
-    __typename: "Task",
+export type OnDeletePropertiesSubscription = {
+  onDeleteProperties?:  {
+    __typename: "Properties",
     id: string,
-    logo?: string | null,
     name?: string | null,
-    description?: string | null,
-    status?: Status | null,
+    logo?: string | null,
+    photo?: string | null,
+    tasks?:  Array< {
+      __typename: "Tasks",
+      id: string,
+      title?: string | null,
+      description?: string | null,
+      due_date?: string | null,
+      media?: Array< string | null > | null,
+    } | null > | null,
+    clientsID: string,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type OnCreateCustomersSubscriptionVariables = {
-  filter?: ModelSubscriptionCustomersFilterInput | null,
+export type OnCreateClientsSubscriptionVariables = {
+  filter?: ModelSubscriptionClientsFilterInput | null,
 };
 
-export type OnCreateCustomersSubscription = {
-  onCreateCustomers?:  {
-    __typename: "Customers",
+export type OnCreateClientsSubscription = {
+  onCreateClients?:  {
+    __typename: "Clients",
     id: string,
-    logo?: string | null,
     name?: string | null,
-    adress?: string | null,
+    address?: string | null,
     phone_number?: string | null,
     email?: string | null,
-    VAT?: string | null,
-    description?: string | null,
+    avatar?: string | null,
+    Properties?:  {
+      __typename: "ModelPropertiesConnection",
+      items:  Array< {
+        __typename: "Properties",
+        id: string,
+        name?: string | null,
+        logo?: string | null,
+        photo?: string | null,
+        tasks?:  Array< {
+          __typename: "Tasks",
+          id: string,
+          title?: string | null,
+          description?: string | null,
+          due_date?: string | null,
+          media?: Array< string | null > | null,
+        } | null > | null,
+        clientsID: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type OnUpdateCustomersSubscriptionVariables = {
-  filter?: ModelSubscriptionCustomersFilterInput | null,
+export type OnUpdateClientsSubscriptionVariables = {
+  filter?: ModelSubscriptionClientsFilterInput | null,
 };
 
-export type OnUpdateCustomersSubscription = {
-  onUpdateCustomers?:  {
-    __typename: "Customers",
+export type OnUpdateClientsSubscription = {
+  onUpdateClients?:  {
+    __typename: "Clients",
     id: string,
-    logo?: string | null,
     name?: string | null,
-    adress?: string | null,
+    address?: string | null,
     phone_number?: string | null,
     email?: string | null,
-    VAT?: string | null,
-    description?: string | null,
+    avatar?: string | null,
+    Properties?:  {
+      __typename: "ModelPropertiesConnection",
+      items:  Array< {
+        __typename: "Properties",
+        id: string,
+        name?: string | null,
+        logo?: string | null,
+        photo?: string | null,
+        tasks?:  Array< {
+          __typename: "Tasks",
+          id: string,
+          title?: string | null,
+          description?: string | null,
+          due_date?: string | null,
+          media?: Array< string | null > | null,
+        } | null > | null,
+        clientsID: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type OnDeleteCustomersSubscriptionVariables = {
-  filter?: ModelSubscriptionCustomersFilterInput | null,
+export type OnDeleteClientsSubscriptionVariables = {
+  filter?: ModelSubscriptionClientsFilterInput | null,
 };
 
-export type OnDeleteCustomersSubscription = {
-  onDeleteCustomers?:  {
-    __typename: "Customers",
+export type OnDeleteClientsSubscription = {
+  onDeleteClients?:  {
+    __typename: "Clients",
     id: string,
-    logo?: string | null,
     name?: string | null,
-    adress?: string | null,
+    address?: string | null,
     phone_number?: string | null,
     email?: string | null,
-    VAT?: string | null,
-    description?: string | null,
+    avatar?: string | null,
+    Properties?:  {
+      __typename: "ModelPropertiesConnection",
+      items:  Array< {
+        __typename: "Properties",
+        id: string,
+        name?: string | null,
+        logo?: string | null,
+        photo?: string | null,
+        tasks?:  Array< {
+          __typename: "Tasks",
+          id: string,
+          title?: string | null,
+          description?: string | null,
+          due_date?: string | null,
+          media?: Array< string | null > | null,
+        } | null > | null,
+        clientsID: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
   } | null,

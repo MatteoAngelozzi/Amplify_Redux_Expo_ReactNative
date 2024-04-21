@@ -8,126 +8,210 @@ type GeneratedMutation<InputType, OutputType> = string & {
   __generatedMutationOutput: OutputType;
 };
 
-export const createTask = /* GraphQL */ `mutation CreateTask(
-  $input: CreateTaskInput!
-  $condition: ModelTaskConditionInput
+export const createProperties = /* GraphQL */ `mutation CreateProperties(
+  $input: CreatePropertiesInput!
+  $condition: ModelPropertiesConditionInput
 ) {
-  createTask(input: $input, condition: $condition) {
+  createProperties(input: $input, condition: $condition) {
     id
-    logo
     name
-    description
-    status
+    logo
+    photo
+    tasks {
+      id
+      title
+      description
+      due_date
+      media
+      __typename
+    }
+    clientsID
     createdAt
     updatedAt
     __typename
   }
 }
 ` as GeneratedMutation<
-  APITypes.CreateTaskMutationVariables,
-  APITypes.CreateTaskMutation
+  APITypes.CreatePropertiesMutationVariables,
+  APITypes.CreatePropertiesMutation
 >;
-export const updateTask = /* GraphQL */ `mutation UpdateTask(
-  $input: UpdateTaskInput!
-  $condition: ModelTaskConditionInput
+export const updateProperties = /* GraphQL */ `mutation UpdateProperties(
+  $input: UpdatePropertiesInput!
+  $condition: ModelPropertiesConditionInput
 ) {
-  updateTask(input: $input, condition: $condition) {
+  updateProperties(input: $input, condition: $condition) {
     id
-    logo
     name
-    description
-    status
+    logo
+    photo
+    tasks {
+      id
+      title
+      description
+      due_date
+      media
+      __typename
+    }
+    clientsID
     createdAt
     updatedAt
     __typename
   }
 }
 ` as GeneratedMutation<
-  APITypes.UpdateTaskMutationVariables,
-  APITypes.UpdateTaskMutation
+  APITypes.UpdatePropertiesMutationVariables,
+  APITypes.UpdatePropertiesMutation
 >;
-export const deleteTask = /* GraphQL */ `mutation DeleteTask(
-  $input: DeleteTaskInput!
-  $condition: ModelTaskConditionInput
+export const deleteProperties = /* GraphQL */ `mutation DeleteProperties(
+  $input: DeletePropertiesInput!
+  $condition: ModelPropertiesConditionInput
 ) {
-  deleteTask(input: $input, condition: $condition) {
+  deleteProperties(input: $input, condition: $condition) {
     id
-    logo
     name
-    description
-    status
+    logo
+    photo
+    tasks {
+      id
+      title
+      description
+      due_date
+      media
+      __typename
+    }
+    clientsID
     createdAt
     updatedAt
     __typename
   }
 }
 ` as GeneratedMutation<
-  APITypes.DeleteTaskMutationVariables,
-  APITypes.DeleteTaskMutation
+  APITypes.DeletePropertiesMutationVariables,
+  APITypes.DeletePropertiesMutation
 >;
-export const createCustomers = /* GraphQL */ `mutation CreateCustomers(
-  $input: CreateCustomersInput!
-  $condition: ModelCustomersConditionInput
+export const createClients = /* GraphQL */ `mutation CreateClients(
+  $input: CreateClientsInput!
+  $condition: ModelClientsConditionInput
 ) {
-  createCustomers(input: $input, condition: $condition) {
+  createClients(input: $input, condition: $condition) {
     id
-    logo
     name
-    adress
+    address
     phone_number
     email
-    VAT
-    description
+    avatar
+    Properties {
+      items {
+        id
+        name
+        logo
+        photo
+        tasks {
+          id
+          title
+          description
+          due_date
+          media
+          __typename
+        }
+        clientsID
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
     createdAt
     updatedAt
     __typename
   }
 }
 ` as GeneratedMutation<
-  APITypes.CreateCustomersMutationVariables,
-  APITypes.CreateCustomersMutation
+  APITypes.CreateClientsMutationVariables,
+  APITypes.CreateClientsMutation
 >;
-export const updateCustomers = /* GraphQL */ `mutation UpdateCustomers(
-  $input: UpdateCustomersInput!
-  $condition: ModelCustomersConditionInput
+export const updateClients = /* GraphQL */ `mutation UpdateClients(
+  $input: UpdateClientsInput!
+  $condition: ModelClientsConditionInput
 ) {
-  updateCustomers(input: $input, condition: $condition) {
+  updateClients(input: $input, condition: $condition) {
     id
-    logo
     name
-    adress
+    address
     phone_number
     email
-    VAT
-    description
+    avatar
+    Properties {
+      items {
+        id
+        name
+        logo
+        photo
+        tasks {
+          id
+          title
+          description
+          due_date
+          media
+          __typename
+        }
+        clientsID
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
     createdAt
     updatedAt
     __typename
   }
 }
 ` as GeneratedMutation<
-  APITypes.UpdateCustomersMutationVariables,
-  APITypes.UpdateCustomersMutation
+  APITypes.UpdateClientsMutationVariables,
+  APITypes.UpdateClientsMutation
 >;
-export const deleteCustomers = /* GraphQL */ `mutation DeleteCustomers(
-  $input: DeleteCustomersInput!
-  $condition: ModelCustomersConditionInput
+export const deleteClients = /* GraphQL */ `mutation DeleteClients(
+  $input: DeleteClientsInput!
+  $condition: ModelClientsConditionInput
 ) {
-  deleteCustomers(input: $input, condition: $condition) {
+  deleteClients(input: $input, condition: $condition) {
     id
-    logo
     name
-    adress
+    address
     phone_number
     email
-    VAT
-    description
+    avatar
+    Properties {
+      items {
+        id
+        name
+        logo
+        photo
+        tasks {
+          id
+          title
+          description
+          due_date
+          media
+          __typename
+        }
+        clientsID
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
     createdAt
     updatedAt
     __typename
   }
 }
 ` as GeneratedMutation<
-  APITypes.DeleteCustomersMutationVariables,
-  APITypes.DeleteCustomersMutation
+  APITypes.DeleteClientsMutationVariables,
+  APITypes.DeleteClientsMutation
 >;

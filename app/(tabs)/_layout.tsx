@@ -5,11 +5,11 @@ import { Pressable } from 'react-native';
 
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
-import { useClientOnlyValue } from '@/components/useClientOnlyValue';
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
+  size?: number;
   color: string;
 }) {
   return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
@@ -22,36 +22,40 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        // Disable the static render of the header on web
-        // to prevent a hydration error in React Navigation v6.
-        headerShown: useClientOnlyValue(false, true),
+        tabBarInactiveTintColor: Colors[colorScheme ?? 'light'].tabIconDefault,
+        tabBarLabelStyle: {
+          fontSize: 12,
+        },
+        tabBarStyle: {
+          height: 85,
+          backgroundColor: Colors[colorScheme ?? 'light'].header,
+        },
+        headerTintColor: Colors[colorScheme ?? 'light'].text,
+        headerStyle: {
+          backgroundColor: Colors[colorScheme ?? 'light'].background,
+        }
       }}>
       <Tabs.Screen
-        name="index"
+        name="settings"
         options={{
-          title: 'To Do List',
-          tabBarIcon: ({ color }) => <TabBarIcon name="list" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
+          title: 'Settings',
+          tabBarIcon: ({ color }) => <TabBarIcon name="gear" size={25} color={color} />,
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="index"
         options={{
-          title: 'Customers',
-          tabBarIcon: ({ color }) => <TabBarIcon name="user-o" color={color} />,
+          headerTransparent: true,
+          headerTitle: '',
+          title: 'Home',
+          tabBarIcon: ({ color }) => <TabBarIcon name="home" size={35} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="contactManager"
+        options={{
+          title: 'Contact Manager',
+          tabBarIcon: ({ color }) => <TabBarIcon name="phone" size={25} color={color} />,
         }}
       />
     </Tabs>

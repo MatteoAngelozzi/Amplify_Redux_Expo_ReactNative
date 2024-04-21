@@ -1,29 +1,45 @@
 import { FlatList, Pressable, StyleSheet } from 'react-native';
 
 import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
+import { Text, View, SafeAreaView } from '@/components/Themed';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@/state/store';
 import { useEffect } from 'react';
-import { taskList } from '@/state/tasks/tasksSlice';
+import { porpertiesList } from '@/state/properties/popertiesSlice';
 import { FontAwesome } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
 import { Link, router } from 'expo-router';
+import { head } from 'aws-amplify/api';
 
 export default function ToDoList() {
 
   const colorScheme = useColorScheme()
-  const tasks = useSelector((state : RootState) => state.tasks)
+  const properties = useSelector((state : RootState) => state.properties)
   const dispatch = useDispatch<AppDispatch>()
 
   useEffect(() => {
-    dispatch(taskList())
+    dispatch(porpertiesList())
   }, [])
 
   return (
-    <View style={styles.container}>
-      <FlatList data={tasks} renderItem={({item}) => (
+    <SafeAreaView style={styles.container}>
+
+      <View style={styles.header}>
+        <Text style={styles.title}>Welcome back USER</Text>
+        <Pressable onPress={() => router.navigate('modal')}>
+            {({ pressed }) => (
+              <FontAwesome
+                name="user-circle"
+                size={80}
+                color={Colors[colorScheme ?? 'light'].text}
+                style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+              />
+            )}
+          </Pressable>
+      </View>
+
+      <FlatList data={properties} renderItem={({item}) => (
 
         <Pressable style={styles.list} onPress={()=>router.navigate(`./${item.id}`)}>
           {({ pressed }) => (
@@ -33,6 +49,7 @@ export default function ToDoList() {
           </>
           )}
         </Pressable>
+        
       )} />
 
       <Pressable style={styles.add_button}>
@@ -40,12 +57,12 @@ export default function ToDoList() {
           <FontAwesome
             name="plus"
             size={25}
-            color={Colors[colorScheme ?? 'light'].text}
+            color={Colors[colorScheme ?? 'light'].tint}
             style={{ opacity: pressed ? 0.5 : 1 }}
           />
         )}
       </Pressable> 
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -54,6 +71,14 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  header: {
+    width: '90%',
+    marginVertical: '5%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    alignSelf: 'center',
   },
   list: {
     flex: 1,
@@ -65,7 +90,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     borderWidth: 2,
-    borderColor: 'gray',
+    borderColor: Colors.light.tint,
     borderRadius: 15,
     padding: 10
   },
@@ -87,6 +112,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     borderWidth: 2,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    borderColor: Colors.light.tint,
   }
 });
